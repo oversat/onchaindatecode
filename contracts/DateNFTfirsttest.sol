@@ -18,7 +18,7 @@ contract DateNFT is ERC721Drop {
             _royaltyBps,
             _primarySaleRecipient
         )
-    {}
+    {
   // Maximum number of tokens that can be minted
   uint256 public constant MAX_TOKENS = 365;
 
@@ -111,4 +111,5 @@ function createSVGLayers(uint256 _tokenId) public view returns (bytes memory) {
     // Return the generated SVG layers
     return dateLayer;
   }
+}
 }
