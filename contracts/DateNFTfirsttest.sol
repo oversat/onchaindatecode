@@ -48,6 +48,33 @@ contract DateNFT is ERC721Drop {
 
     // Generate the SVG image data for the token
     bytes memory svgData = createSVGLayers(tokenId);
+// Generates the SVG image layers for the specified token
+function createSVGLayers(uint256 _tokenId) public view returns (bytes memory) {
+  // Set the image dimensions to 500x500 pixels
+  string memory dimensions = "width='500' height='500'";
+
+  // Generate a random HEX color for the background
+  string memory backgroundColor = randomHexColor();
+
+  // Set the font size and alignment for the token ID
+  string memory tokenIdStyle = "font-size='12' text-anchor='end'";
+
+  // Set the font size, weight, and alignment for the date
+  string memory dateStyle = "font-size='24' font-weight='bold' text-anchor='middle'";
+
+  // Create the SVG image layers
+  bytes memory svgData = createSVGLayers(
+    dimensions,
+    backgroundColor,
+    _tokenId,
+    tokenIdStyle,
+    date,
+    dateStyle
+  );
+
+  // Return the generated SVG data
+  return svgData;
+}
 
     // Mint the NFT with the generated SVG data
     _mint(msg.sender, tokenId, svgData);
